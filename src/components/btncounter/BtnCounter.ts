@@ -1,7 +1,7 @@
-import { Component, ComponentBuildFunc } from "../../vdom/Component";
-import { VApp } from "../../vdom/VApp";
-import { VNode } from "../../vdom/VNode";
-import { Props } from "../../vdom/Props";
+import { Component, ComponentBuildFunc } from '@kloudsoftware/eisen';
+import { VApp } from '@kloudsoftware/eisen';
+import { VNode } from '@kloudsoftware/eisen';
+import { Props } from '@kloudsoftware/eisen';
 import { HttpClient } from "../../HttpClient";
 
 export default class BtnCounter extends Component {

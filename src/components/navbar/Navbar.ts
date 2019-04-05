@@ -1,10 +1,10 @@
-import { Component, ComponentBuildFunc, ComponentProps } from "../../vdom/Component";
-import { VNode, Attribute, cssClass, id, labelFor, password, VNodeType, src } from "../../vdom/VNode";
-import { Props } from "../../vdom/Props";
-import { VApp } from "../../vdom/VApp";
+import { Component, ComponentBuildFunc, ComponentProps } from '@kloudsoftware/eisen';
+import { VNode, Attribute, cssClass, id, labelFor, password, VNodeType, src } from '@kloudsoftware/eisen';
+import { Props } from '@kloudsoftware/eisen';
+import { VApp } from '@kloudsoftware/eisen';
 
 import { css } from './navbarcss';
-import { RouterLink } from "../../Router";
+import { RouterLink } from '@kloudsoftware/eisen';
 
 export class Navbar extends Component {
     public build(app: VApp): ComponentBuildFunc {

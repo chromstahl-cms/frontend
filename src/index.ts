@@ -1,7 +1,7 @@
-import { VApp } from './vdom/VApp';
-import { cssClass } from './vdom/VNode';
-import { Renderer } from './vdom/render';
-import { Props } from './vdom/Props';
+import { VApp, VNodeBuilder} from '@kloudsoftware/eisen';
+import { cssClass } from '@kloudsoftware/eisen';
+import { Renderer } from '@kloudsoftware/eisen';
+import { Props } from '@kloudsoftware/eisen';
 import { AdminRegister } from './components/adminregister/AdminRegisterComponent';
 import { Navbar } from './components/navbar/Navbar';
 import BtnCounter from './components/btncounter/BtnCounter';

@@ -1,7 +1,7 @@
-import { Component, ComponentBuildFunc, ComponentProps } from "../../vdom/Component";
-import { VNode } from "../../vdom/VNode";
-import { Props } from "../../vdom/Props";
-import { VApp } from "../../vdom/VApp";
+import { Component, ComponentBuildFunc, ComponentProps } from '@kloudsoftware/eisen';
+import { VNode } from '@kloudsoftware/eisen';
+import { Props } from '@kloudsoftware/eisen';
+import { VApp } from '@kloudsoftware/eisen';
 
 //vendor
 import { EditorState } from "prosemirror-state"

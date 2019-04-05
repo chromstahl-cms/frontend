@@ -1,9 +1,9 @@
-import { Component, ComponentBuildFunc, ComponentProps } from "../../vdom/Component";
-import { VNode, Attribute, cssClass, id, labelFor, password, VNodeType, src, VInputNode } from "../../vdom/VNode";
-import { Props } from "../../vdom/Props";
-import { VApp } from "../../vdom/VApp";
-import { isDefinedAndNotEmpty } from "../../vdom/Common";
-import { RouterLink } from "../../Router";
+import { Component, ComponentBuildFunc, ComponentProps } from '@kloudsoftware/eisen';
+import { VNode, Attribute, cssClass, id, labelFor, password, VNodeType, src, VInputNode } from '@kloudsoftware/eisen';
+import { Props } from '@kloudsoftware/eisen';
+import { VApp } from '@kloudsoftware/eisen';
+import { isDefinedAndNotEmpty } from '@kloudsoftware/eisen';
+import { RouterLink } from '@kloudsoftware/eisen';
 import { HttpClient } from "../../HttpClient";
 
 import { css } from "./bloginfodialogcss";

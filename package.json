@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@kloudsoftware/eisen": "1.0.3",
     "prosemirror-example-setup": "^1.0.1",
     "prosemirror-model": "^1.7.0",
     "prosemirror-schema-basic": "^1.0.0",

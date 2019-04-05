@@ -1,10 +1,10 @@
-import { Component, ComponentBuildFunc, ComponentProps } from "../../vdom/Component";
-import { VNode, Attribute, cssClass, id, labelFor, password, VInputNode } from "../../vdom/VNode";
-import { Props } from "../../vdom/Props";
-import { VApp } from "../../vdom/VApp";
+import { Component, ComponentBuildFunc, ComponentProps } from '@kloudsoftware/eisen';
+import { VNode, Attribute, cssClass, id, labelFor, password, VInputNode } from '@kloudsoftware/eisen';
+import { Props } from '@kloudsoftware/eisen';
+import { VApp } from '@kloudsoftware/eisen';
 import { css } from './logincss'
-import { RouterLink } from "../../Router";
-import { isDefinedAndNotEmpty } from "../../vdom/Common";
+import { RouterLink } from '@kloudsoftware/eisen';
+import { isDefinedAndNotEmpty } from '@kloudsoftware/eisen';
 import { HttpClient } from "../../HttpClient";
 
 class UserRegisterInfo {

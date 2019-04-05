@@ -1,9 +1,9 @@
-import { Component, ComponentBuildFunc } from "../../vdom/Component";
-import { VApp } from "../../vdom/VApp";
-import { VNode, id } from "../../vdom/VNode";
-import { Props } from "../../vdom/Props";
+import { Component, ComponentBuildFunc } from '@kloudsoftware/eisen';
+import { VApp } from '@kloudsoftware/eisen';
+import { VNode, id } from '@kloudsoftware/eisen';
+import { Props } from '@kloudsoftware/eisen';
 import { HttpClient } from "../../HttpClient";
-import { parseStrIntoVNode, parseIntoUnmanaged } from "../../vdom/Common";
+import { parseStrIntoVNode, parseIntoUnmanaged } from '@kloudsoftware/eisen';
 import { blog1 } from "./DummyBlog";
 import { css } from "./blogcss"
 

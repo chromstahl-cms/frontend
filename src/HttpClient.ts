@@ -1,5 +1,5 @@
 import { reject } from "q";
-import { VApp } from "./vdom/VApp";
+import { VApp } from '@kloudsoftware/eisen';
 
 export class HttpClient {
     private basePath: string;
