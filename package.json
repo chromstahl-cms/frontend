@@ -1,5 +1,5 @@
 {
-    "name": "Kloud MS Frontend",
+    "name": "kms-frontend",
     "version": "1.0.0",
     "description": "The frontend for kloud ms",
     "main": "src/index.ts",
