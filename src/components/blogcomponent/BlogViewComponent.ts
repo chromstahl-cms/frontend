@@ -4,7 +4,7 @@ import { VNode, id } from '@kloudsoftware/eisen';
 import { Props } from '@kloudsoftware/eisen';
 import { HttpClient } from "../../HttpClient";
 import { parseStrIntoVNode, parseIntoUnmanaged } from '@kloudsoftware/eisen';
-import { blog1 } from "./DummyBlog";
+import { blog1, blog2 } from "./DummyBlog";
 import { css } from "./blogcss"
 
 export class BlogViewComponent extends Component {
@@ -19,7 +19,7 @@ export class BlogViewComponent extends Component {
             //TODO get blogposts
             //TODO translate response into Props
             const blogMount = app.k("div", { attrs: [id("blogMount")] })
-            const blogEntries = [blog1];
+            const blogEntries = [blog1, blog2];
             const posts: Props[] = blogEntries.map(entry => {
                 const map = new Map();
                 map.set("htmlString", entry);
