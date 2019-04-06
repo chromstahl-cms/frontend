@@ -1,6 +1,6 @@
 export const css = `
 #blogMount * > img {
-    max-height: 5em;
+    height: 25%;
 }
 
 #blogMount {
@@ -12,10 +12,14 @@ export const css = `
     margin-top: 2rem;
 }
 
-#blogMount > * [h1, h2]{
+#blogMount > * h1,
+#blogMount > * h2,
+#blogMount > * h3,
+#blogMount > * h4,
+#blogMount > * h5,
+#blogMount > * h6 {
     margin: 1rem;
     margin-left: 0;
-    color: red;
 }
 
 
