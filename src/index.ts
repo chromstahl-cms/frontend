@@ -47,10 +47,10 @@ const routerMnt = app.createElement("div", undefined, container);
 
 const router = app.useRouter(routerMnt);
 
-router.registerRoute("/", new AdminRegister())
+router.registerRoute("/", new BlogViewComponent())
+router.registerRoute("/register", new AdminRegister())
 router.registerRoute("/foo", new BtnCounter());
 router.registerRoute("/login", new Login());
 router.registerRoute("/setup", new BlogInfoDialog(), props);
 router.registerRoute("/prose", new ProsemirrorComponent());
-router.registerRoute("/blog", new BlogViewComponent());
 router.resolveRoute(document.location.pathname);
