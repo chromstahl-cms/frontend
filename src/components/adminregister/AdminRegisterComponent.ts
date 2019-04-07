@@ -91,7 +91,7 @@ export class AdminRegister extends Component {
             // TODO: Fix centering of heading
             const div = app.k("div", {attrs: [cssClass("card form-card")]}, [
                 app.k("div", { attrs: [cssClass("form-holder")] }, [
-                    app.k("h1", { value: "Create admin account", attrs: [cssClass("admin-register-heading")] }),
+                    app.k("h1", { value: "Create admin account", attrs: [cssClass("form-heading")] }),
                     app.k("label", { value: "Enter eMail", attrs: [labelFor("iEmail"), cssClass("user-input-label")] }),
                     eMailInput,
                     app.k("label", { value: "Enter user name", attrs: [labelFor("iUserNam"), cssClass("user-input-label")] }),
