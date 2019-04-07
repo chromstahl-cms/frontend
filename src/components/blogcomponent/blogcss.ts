@@ -1,33 +1,46 @@
 export const css = `
-#blogMount * > img {
+.blogTextContainer * > img {
     height: 25%;
 }
 
-#blogMount {
+.blogTextContainer {
     line-height: 1.4rem;
     max-width: 50vw;
 }
 
-#blogMount > * p {
-    margin-top: 2rem;
+.blogTextContainer > * p {
+    margin-top: 0.5rem;
 }
 
-#blogMount > * h1,
-#blogMount > * h2,
-#blogMount > * h3,
-#blogMount > * h4,
-#blogMount > * h5,
-#blogMount > * h6 {
+.blogHeadingContainer > h1,
+.blogHeadingContainer > h2,
+.blogHeadingContainer > h3,
+.blogHeadingContainer > h4,
+.blogHeadingContainer > h5,
+.blogHeadingContainer > h6 {
     margin: 1rem;
     margin-left: 0;
+    margin-top: 0;
 }
 
 
 .blogPostContainer {
-    margin-top: 3em;
+    margin-top: 2em;
+    margin-bottom: 2em;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2em;
+}
+
+.blogHeadingContainer {
+    display: flex;
+    width: 100%;
+}
+
+.blogHeadingContainer > p {
+    margin-left: auto;
+    color: #d1d1d1;
 }
 `

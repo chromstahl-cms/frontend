@@ -1,4 +1,4 @@
-import { Component, ComponentBuildFunc } from '@kloudsoftware/eisen';
+import { Component, ComponentBuildFunc, cssClass } from '@kloudsoftware/eisen';
 import { VApp } from '@kloudsoftware/eisen';
 import { VNode, id } from '@kloudsoftware/eisen';
 import { Props } from '@kloudsoftware/eisen';
@@ -23,7 +23,9 @@ export class BlogViewComponent extends Component {
             const blogEntries = [blog1, blog2];
             const posts: Props[] = blogEntries.map(entry => {
                 const map = new Map();
-                map.set("htmlString", entry);
+                map.set("heading", entry.heading);
+                map.set("htmlString", entry.text);
+                map.set("dateString", entry.date);
                 return map;
             }).map(entry => new Props(app, entry));
 
@@ -53,11 +55,17 @@ export class BlogPostViewComponent extends Component {
 
             let containerdiv = app.k("div")
             containerdiv.addClass("card blogPostContainer");
+            const dateString = new Date(props.getProp("dateString")).toLocaleDateString();
+            const headDiv = app.k("div", {attrs: [cssClass("blogHeadingContainer")]}, [
+                app.k("h1", { value: props.getProp("heading") }),
+                app.k("p", { value: dateString })
+            ]);
 
 
-
+            containerdiv.appendChild(headDiv);
             const http = app.get<HttpClient>("http");
-            parseIntoUnmanaged(props.getProp("htmlString"), containerdiv);
+            const textContainer = parseIntoUnmanaged(props.getProp("htmlString"), containerdiv);
+            textContainer.addClass("blogTextContainer");
             root.appendChild(containerdiv);
 
 
