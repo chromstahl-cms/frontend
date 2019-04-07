@@ -329,8 +329,11 @@ const css = `.ProseMirror [%%%TARGET%%%%] {
   .ProseMirror p { margin-bottom: 1em }
 
   #editorWrapper {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
       width: 50vw;
-      height: 30rem;
+      min-height: 20rem;
+      border: 1px solid #c0c0c0;
   }
   `
 
