@@ -17,11 +17,13 @@ app.init();
 
 const css = `
 .container {
-display: flex
+    display: flex;
+    width: 100vw;
 }
 
 .center-container {
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 html, body {
@@ -39,7 +41,7 @@ props.setProp("blogSubtitle", "because no one wants wordpress anyway");
 
 app.mountComponent(new Navbar(), app.rootNode, props);
 
-const container = app.createElement("div", undefined, app.rootNode, [cssClass("container", "center-container")]);
+const container = app.createElement("div", undefined, app.rootNode, [cssClass("container")]);
 
 const routerMnt = app.createElement("div", undefined, container);
 

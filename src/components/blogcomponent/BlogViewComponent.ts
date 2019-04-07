@@ -10,6 +10,7 @@ import { css } from "./blogcss"
 export class BlogViewComponent extends Component {
     build(app: VApp): ComponentBuildFunc {
         return (root: VNode, props: Props) => {
+            root.addClass("container center-container");
 
             const scopedCss = app.k("style", { value: css })
             const http = app.get<HttpClient>("http");
@@ -51,7 +52,7 @@ export class BlogPostViewComponent extends Component {
         return (root: VNode, props: Props) => {
 
             let containerdiv = app.k("div")
-            containerdiv.addClass("card container blogPostContainer");
+            containerdiv.addClass("card blogPostContainer");
 
 
 

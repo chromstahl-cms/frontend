@@ -19,9 +19,9 @@ export class AdminRegister extends Component {
     public build(app: VApp): ComponentBuildFunc {
         return (root: VNode, props: Props): ComponentProps => {
 
-            root.addClass("card container");
-
             app.createElement("style", css, root);
+            root.addClass("container center-container");
+
             let userInfo = new UserRegisterInfo();
             let pwInput = app.k("input", { attrs: [id("iPassword"), password(), cssClass("user-input")] }) as VInputNode;
             let pwConfirm = app.k("input", { attrs: [id("iPasswordConfirm"), password(), cssClass("user-input")] }) as VInputNode;
@@ -88,9 +88,10 @@ export class AdminRegister extends Component {
             pwInput.bindObject(userInfo, "password");
             pwConfirm.bindObject(userInfo, "passwordConfirm");
 
-            const div = app.k("div", {}, [
-                app.k("h1", { value: "Create admin account", attrs: [cssClass("admin-register-heading")] }),
+            // TODO: Fix centering of heading
+            const div = app.k("div", {attrs: [cssClass("card form-card")]}, [
                 app.k("div", { attrs: [cssClass("form-holder")] }, [
+                    app.k("h1", { value: "Create admin account", attrs: [cssClass("admin-register-heading")] }),
                     app.k("label", { value: "Enter eMail", attrs: [labelFor("iEmail"), cssClass("user-input-label")] }),
                     eMailInput,
                     app.k("label", { value: "Enter user name", attrs: [labelFor("iUserNam"), cssClass("user-input-label")] }),

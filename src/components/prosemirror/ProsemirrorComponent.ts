@@ -18,6 +18,7 @@ import OrderedMap = require('orderedmap');
 export class ProsemirrorComponent extends Component {
     public build(app: VApp): ComponentBuildFunc {
         return (root: VNode, props: Props): ComponentProps => {
+            root.addClass("container center-container");
             const editorWrapper = app.k("div", {attrs: [id("editorWrapper"), cssClass("card")]});
             root.appendChild(editorWrapper);
             let mount = app.createUnmanagedNode(editorWrapper);

@@ -17,7 +17,7 @@ export class Login extends Component {
     public build(app: VApp): ComponentBuildFunc {
         return (root: VNode, props: Props): ComponentProps => {
 
-            root.addClass("card container");
+            root.addClass("container center-container");
 
             app.createElement("style", css, root);
             let userInfo = new UserRegisterInfo();
@@ -32,9 +32,9 @@ export class Login extends Component {
             userName.bindObject(userInfo, "userName");
             pwInput.bindObject(userInfo, "password");
 
-            const div = app.k("div", {}, [
-                app.k("h1", { value: "Log in", attrs: [cssClass("admin-register-heading")] }),
+            const div = app.k("div", {attrs: [cssClass("card form-card")]}, [
                 app.k("div", { attrs: [cssClass("form-holder")] }, [
+                    app.k("h1", { value: "Log in", attrs: [cssClass("admin-register-heading")] }),
                     app.k("label", { value: "Enter user name", attrs: [labelFor("iUserNam"), cssClass("user-input-label")] }),
                     userName,
                     app.k("label", { value: "Enter password", attrs: [labelFor("iPassword"), cssClass("user-input-label")] }),
