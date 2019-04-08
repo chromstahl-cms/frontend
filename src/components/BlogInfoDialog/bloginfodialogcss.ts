@@ -6,10 +6,6 @@ h1 {
     margin-bottom: 1.3rem;
 }
 
-.container {
-    padding: 4em;
-}
-
 .form-holder {
     display: flex;
     flex-direction: column;

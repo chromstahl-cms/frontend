@@ -16,7 +16,7 @@ class BlogInfo {
 export class BlogInfoDialog extends Component {
     public build(app: VApp): ComponentBuildFunc {
         return (root: VNode, props: Props): ComponentProps => {
-            root.addClass("card container");
+            root.addClass("container center-container");
             app.createElement("style", css, root);
             const blogNameInput = app.k("input", { attrs: [id("iBlogName"), cssClass("user-input")] }) as VInputNode;
             const blogSubTitleInput = app.k("input", { attrs: [id("iBlogSubtitle"), cssClass("user-input")] }) as VInputNode;
@@ -56,7 +56,7 @@ export class BlogInfoDialog extends Component {
                     .then(json => console.log(json));
             });
 
-            const div = app.k("div", {}, [
+            const div = app.k("div", { attrs: [cssClass("card form-card")]}, [
                 app.k("h1", { value: "Give your blog a name", attrs: [cssClass("admin-register-heading")] }),
                 app.k("div", { attrs: [cssClass("form-holder")] }, [
                     app.k("label", { value: "Enter the name of your blog", attrs: [labelFor("iBlogName"), cssClass("user-input-label")] }),
