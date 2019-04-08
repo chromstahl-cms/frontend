@@ -15,7 +15,7 @@
         "url": "https://github.com/kloudsoftware/eisen"
     },
     "dependencies": {
-        "@kloudsoftware/eisen": "1.0.4",
+        "@kloudsoftware/eisen": "1.0.5",
         "prosemirror-example-setup": "^1.0.1",
         "prosemirror-inputrules": "^1.0.1",
         "prosemirror-model": "^1.7.0",
