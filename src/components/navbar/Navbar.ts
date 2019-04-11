@@ -15,7 +15,7 @@ export class Navbar extends Component {
             ], "");
 
             routerlnk.addClass("loginIcon");
-            app.createElement("img", undefined, routerlnk, [src("login.svg"), cssClass("loginIcon")])
+            app.createElement("img", undefined, routerlnk, [src("login.svg")])
 
             app.createElement("style", css, root);
             const div = app.k("div", { attrs: [cssClass("logo-container")] }, [
