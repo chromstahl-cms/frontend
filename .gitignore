@@ -3,3 +3,5 @@ lib/
 dist/
 .cache/
 .#*
+cypress/fixtures/
+cypress/fixtures/*
