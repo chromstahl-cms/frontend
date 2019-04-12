@@ -46,7 +46,7 @@ app.createElement("style", css, app.rootNode);
 app.use("http", new HttpClient(`http://192.168.111.118:8083`, app));
 
 const props = new Props(app);
-props.setProp("blogName", "Kloud-ms");
+props.setProp("blogName", "Chromstahl");
 props.setProp("blogSubtitle", "because no one wants wordpress anyway");
 
 app.mountComponent(new Navbar(), app.rootNode, props);
