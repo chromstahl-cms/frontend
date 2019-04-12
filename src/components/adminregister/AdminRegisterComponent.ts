@@ -27,10 +27,12 @@ export class AdminRegister extends Component {
             let pwConfirm = app.k("input", { attrs: [id("iPasswordConfirm"), password(), cssClass("user-input")] }) as VInputNode;
             let userName = app.k("input", { attrs: [id("iUserName"), cssClass("user-input")] }) as VInputNode;
             let eMailInput = app.k("input", { attrs: [id("iEmail"), cssClass("user-input"), email()] }) as VInputNode;
-            let routerlnk = new RouterLink(app, "/setup", [], "")
-            routerlnk.addClass("router-link");
+            let confirmRouterLink = new RouterLink(app, "/setup", [], "")
+            const loginRouterLink = new RouterLink(app, "/login", [], "Already have an account? Login here!");
+            confirmRouterLink.addClass("router-link");
+            loginRouterLink.addClass("login-link")
 
-            let confirmBtn = app.createElement("span", "Register", routerlnk, [cssClass("btn btn-confirm router-btn")]);
+            let confirmBtn = app.createElement("span", "Register", confirmRouterLink, [cssClass("btn btn-confirm router-btn")]);
 
             let errorPasswordConfirm = false;
             let errorPassword = false;
@@ -100,7 +102,8 @@ export class AdminRegister extends Component {
                     pwInput,
                     app.k("label", { value: "Confirm password", attrs: [labelFor("iPasswordConfirm"), cssClass("user-input-label")] }),
                     pwConfirm,
-                    routerlnk,
+                    confirmRouterLink,
+                    loginRouterLink
                 ]),
             ]);
 

@@ -9,4 +9,12 @@ h1 {
     padding-left: 2em;
     padding-right: 2em;
 }
+
+.register-link {
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: #a1a1a1;
+    text-decoration: underline;
+}
 `;

@@ -23,24 +23,27 @@ export class Login extends Component {
             let userInfo = new UserRegisterInfo();
             let pwInput = app.k("input", { attrs: [id("iPassword"), password(), cssClass("user-input")] }) as VInputNode;
             let userName = app.k("input", { attrs: [id("iUserName"), cssClass("user-input")] }) as VInputNode;
-            let routerlnk = new RouterLink(app, "/setup", [], "")
-            routerlnk.addClass("router-link");
+            let confirmRouterLink = new RouterLink(app, "/setup", [], "");
+            const registerRouterLink = new RouterLink(app, "/register", [], "No account? Click here to register");
+            confirmRouterLink.addClass("router-link");
+            registerRouterLink.addClass("register-link")
 
-            let confirmBtn = app.createElement("span", "Login", routerlnk, [cssClass("btn btn-confirm router-btn")]);
+            let confirmBtn = app.createElement("span", "Login", confirmRouterLink, [cssClass("btn btn-confirm router-btn")]);
 
 
             userName.bindObject(userInfo, "userName");
             pwInput.bindObject(userInfo, "password");
 
             // TODO: Fix centering of heading
-            const div = app.k("div", {attrs: [cssClass("card form-card")]}, [
+            const div = app.k("div", { attrs: [cssClass("card form-card")] }, [
                 app.k("div", { attrs: [cssClass("form-holder")] }, [
                     app.k("h1", { value: "Log in", attrs: [cssClass("form-heading")] }),
                     app.k("label", { value: "Enter user name", attrs: [labelFor("iUserNam"), cssClass("user-input-label")] }),
                     userName,
                     app.k("label", { value: "Enter password", attrs: [labelFor("iPassword"), cssClass("user-input-label")] }),
                     pwInput,
-                    routerlnk,
+                    confirmRouterLink,
+                    registerRouterLink
                 ])
             ]);
 
