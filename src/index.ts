@@ -1,4 +1,4 @@
-import { VApp, VNodeBuilder} from '@kloudsoftware/eisen';
+import { VApp, VNodeBuilder, Component} from '@kloudsoftware/eisen';
 import { cssClass } from '@kloudsoftware/eisen';
 import { Renderer } from '@kloudsoftware/eisen';
 import { Props } from '@kloudsoftware/eisen';
@@ -10,6 +10,16 @@ import { HttpClient } from './HttpClient';
 import { BlogInfoDialog } from './components/BlogInfoDialog/BlogInfoDialog';
 import { ProsemirrorComponent } from './components/prosemirror/ProsemirrorComponent';
 import { BlogPostViewComponent, BlogViewComponent } from './components/blogcomponent/BlogViewComponent';
+import { Registration } from '@kloudsoftware/chromstahl-plugin'
+import { ErrorComponent } from './components/errorView/ErrorComponent';
+
+class ErrorState {
+    message: string;
+
+    constructor(message: string) {
+        this.message = message;
+    }
+}
 
 const renderer = new Renderer();
 const app = new VApp("target", renderer);
@@ -33,7 +43,7 @@ html, body {
 `;
 app.createElement("style", css, app.rootNode);
 
-app.use("http", new HttpClient("http://192.168.111.118:8083", app));
+app.use("http", new HttpClient(`http://192.168.111.118:8083`, app));
 
 const props = new Props(app);
 props.setProp("blogName", "Kloud-ms");
@@ -47,10 +57,33 @@ const routerMnt = app.createElement("div", undefined, container);
 
 const router = app.useRouter(routerMnt);
 
-router.registerRoute("/", new BlogViewComponent())
-router.registerRoute("/register", new AdminRegister())
-router.registerRoute("/foo", new BtnCounter());
-router.registerRoute("/login", new Login());
-router.registerRoute("/setup", new BlogInfoDialog(), props);
-router.registerRoute("/prose", new ProsemirrorComponent());
-router.resolveRoute(document.location.pathname);
+let errorStates = new Array<ErrorState>();
+let claimedRoutes = new Array<string>();
+let pluginMaps: Array<Map<string, Component>> = new Array();
+
+// $$MARK
+
+
+pluginMaps.forEach(it => {
+    it.forEach((value: Component, key: string) => {
+        if(claimedRoutes.indexOf(key) != -1) {
+            errorStates.push(new ErrorState(`Route ${key} is already registered`))
+        } else if(errorStates.length != 0) {
+            router.registerRoute(key, value);
+        }
+    });
+});
+
+if(errorStates.length != 0) {
+    router.registerRoute("/error", new ErrorComponent());
+    router.resolveRoute("/error");
+} else {
+    router.registerRoute("/", new BlogViewComponent())
+    router.registerRoute("/register", new AdminRegister())
+    router.registerRoute("/foo", new BtnCounter());
+    router.registerRoute("/login", new Login());
+    router.registerRoute("/setup", new BlogInfoDialog(), props);
+    router.registerRoute("/prose", new ProsemirrorComponent());
+    router.resolveRoute(document.location.pathname);
+}
+
