@@ -12,6 +12,7 @@ import { ProsemirrorComponent } from './components/prosemirror/ProsemirrorCompon
 import { BlogPostViewComponent, BlogViewComponent } from './components/blogcomponent/BlogViewComponent';
 import { Registration } from '@kloudsoftware/chromstahl-plugin'
 import { ErrorComponent } from './components/errorView/ErrorComponent';
+import { ApiResolver } from './i18n/apiResolver';
 
 class ErrorState {
     message: string;
@@ -43,7 +44,9 @@ html, body {
 `;
 app.createElement("style", css, app.rootNode);
 
-app.use("http", new HttpClient(`http://192.168.111.118:8083`, app));
+const httpClient = new HttpClient(`http://192.168.111.118:8083`, app);
+app.use("http", httpClient);
+app.useTranslationResolver(new ApiResolver(httpClient));
 
 const props = new Props(app);
 props.setProp("blogName", "Chromstahl");
