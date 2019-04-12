@@ -1,0 +1,9 @@
+image: node-cypress
+
+matrix:
+  - env: SCRIPT=test
+
+before_script:
+  - npm i
+script:
+  - npm run test
