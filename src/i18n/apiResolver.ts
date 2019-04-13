@@ -1,43 +1,34 @@
 import { HttpClient } from "../HttpClient";
+import { I18nCache } from "./cache";
 import { Resolver } from "@kloudsoftware/eisen";
 
-// Types used for clarity in data structures
-export type Locale = string;
-export type Key = string;
+class TranslationDTO {
+    locale: string
+    key: string;
+    value: string
+}
 
-export class ApiResolver implements Resolver {
-    private const i18nEndpoint: string = "/i18n";
+const i18nEndpoint: string = "/i18n";
+export class ApiResolver extends Resolver {
     private httpClient: HttpClient;
-    private cache: Map<Locale, Map<Key, string>>;
+    private cache: I18nCache;
 
-    constructor(httpClient: HttpClient) {
+    constructor(httpClient: HttpClient, cache: I18nCache) {
+        super();
         this.httpClient = httpClient;
-        this.cache = new Map();
+        this.cache = cache;
     }
 
-    getPrefix(): string {
-        return "$_"
+    async get(key: string, locale: string): Promise<string> {
+        const resp = await this.httpClient.performGet(this.buildEndpoint(locale, key));
+
+        const dto = (await resp.json()) as TranslationDTO;
+        this.cache.putIntoCache(dto.locale, dto.key, dto.value)
+
+        return dto.value;
     }
 
-    get(key: string, locale: string): string {
-        const fromCache = this.getFromCache(locale, key);
-        if (fromCache != undefined) {
-            return fromCache;
-        }
-    }
-
-    private getFromCache(locale: Locale, key: Key): string | undefined {
-        if (!this.cache.has(locale)) return undefined;
-
-        const keyMap = this.cache.get(locale);
-        return keyMap.get(key);
-    }
-
-    private loadFromApiAndPutIntoCache(locale: Locale, key: Key): string | undefined {
-        this.httpClient.peformGet(this.buildEndpoint(locale, key));
-    }
-
-    private buildEndpoint(locale: Locale, key: Key): string {
-        return `${this.i18nEndpoint}/locale/key`;
+    private buildEndpoint(locale: string, key: string): string {
+        return `${i18nEndpoint}/locale/key`;
     }
 }

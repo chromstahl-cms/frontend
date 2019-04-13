@@ -10,7 +10,7 @@ export class HttpClient {
         this.app = app;
     }
 
-    peformGet(path: string) {
+    performGet(path: string): Promise<Response> {
         return new Promise((resolve, reject) => {
             fetch(this.basePath + path, {
                 method: "GET",

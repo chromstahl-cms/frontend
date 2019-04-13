@@ -9,7 +9,7 @@ export default class BtnCounter extends Component {
         return (root: VNode, props: Props) => {
 
             const http = app.get<HttpClient>("http");
-            http.peformGet("/test/403")
+            http.performGet("/test/403")
 
             props.setProp("times", 0);
             let btn = app.createElement("button", "You have clicked me {{ times }} times!", root, undefined, props);

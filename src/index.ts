@@ -13,6 +13,7 @@ import { BlogPostViewComponent, BlogViewComponent } from './components/blogcompo
 import { Registration } from '@kloudsoftware/chromstahl-plugin'
 import { ErrorComponent } from './components/errorView/ErrorComponent';
 import { ApiResolver } from './i18n/apiResolver';
+import { I18nCache, CacheResolver } from './i18n/cache';
 
 class ErrorState {
     message: string;
@@ -46,7 +47,10 @@ app.createElement("style", css, app.rootNode);
 
 const httpClient = new HttpClient(`http://192.168.111.118:8083`, app);
 app.use("http", httpClient);
-app.useTranslationResolver(new ApiResolver(httpClient));
+
+const i18nCache = new I18nCache();
+app.useTranslationResolver(new CacheResolver(i18nCache));
+app.useTranslationResolver(new ApiResolver(httpClient, i18nCache));
 
 const props = new Props(app);
 props.setProp("blogName", "Chromstahl");
