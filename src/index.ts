@@ -68,7 +68,7 @@ pluginMaps.forEach(it => {
     it.forEach((value: Component, key: string) => {
         if(claimedRoutes.indexOf(key) != -1) {
             errorStates.push(new ErrorState(`Route ${key} is already registered`))
-        } else if(errorStates.length != 0) {
+        } else if(errorStates.length == 0) {
             router.registerRoute(key, value);
         }
     });
