@@ -5,3 +5,5 @@ dist/
 .#*
 cypress/fixtures/
 cypress/fixtures/*
+cypress/screenshots/*
+cypress/screenshots/
