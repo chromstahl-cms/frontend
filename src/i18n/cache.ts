@@ -44,7 +44,7 @@ export class CacheResolver extends Resolver {
         return new Promise((resolve, reject) => {
             const match = this.cache.getFromCache(locale, key);
             if (match == undefined) {
-                reject(`No match for ${key} in ${locale} in cache found`);
+                reject(`No match for "${key}" in locale "${locale}" in cache found`);
                 return;
             }
 

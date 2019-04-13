@@ -22,6 +22,11 @@ export class ApiResolver extends Resolver {
     async get(key: string, locale: string): Promise<string> {
         const resp = await this.httpClient.performGet(this.buildEndpoint(locale, key));
 
+        // TODO: More precise error handling
+        if (resp.status != 200) {
+            throw new Error(`No result from api for "${key}" in locale "${locale}" found`);
+        }
+
         const dto = (await resp.json()) as TranslationDTO;
         this.cache.putIntoCache(dto.locale, dto.key, dto.value)
 
@@ -29,6 +34,6 @@ export class ApiResolver extends Resolver {
     }
 
     private buildEndpoint(locale: string, key: string): string {
-        return `${i18nEndpoint}/locale/key`;
+        return `${i18nEndpoint}/${locale}/${key}`;
     }
 }
