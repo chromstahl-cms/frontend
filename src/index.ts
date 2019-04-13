@@ -52,8 +52,9 @@ const i18nCache = new I18nCache();
 app.useTranslationResolver(new CacheResolver(i18nCache));
 app.useTranslationResolver(new ApiResolver(httpClient, i18nCache));
 
-const props = new Props(app);
-props.setProp("blogName", "Chromstahl");
+const props = new Props(app, new Map([["blogName", "Chromstahl"]]));
+window.document.title = "Chromstahl";
+props.registerCallback("blogName", p => window.document.title = p);
 props.setProp("blogSubtitle", "because no one wants wordpress anyway");
 
 app.mountComponent(new Navbar(), app.rootNode, props);

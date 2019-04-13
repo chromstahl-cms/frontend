@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@kloudsoftware/chromstahl-plugin": "^1.0.0",
-        "@kloudsoftware/eisen": "1.0.14",
+        "@kloudsoftware/eisen": "1.0.15",
         "prosemirror-example-setup": "^1.0.1",
         "prosemirror-inputrules": "^1.0.1",
         "prosemirror-model": "^1.7.0",
