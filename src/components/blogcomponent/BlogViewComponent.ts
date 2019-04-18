@@ -2,7 +2,7 @@ import { Component, ComponentBuildFunc, cssClass } from '@kloudsoftware/eisen';
 import { VApp } from '@kloudsoftware/eisen';
 import { VNode, id } from '@kloudsoftware/eisen';
 import { Props } from '@kloudsoftware/eisen';
-import { HttpClient } from "../../HttpClient";
+import { HttpClient } from "@kloudsoftware/chromstahl-plugin";
 import { parseStrIntoVNode, parseIntoUnmanaged } from '@kloudsoftware/eisen';
 import { blog1, blog2 } from "./DummyBlog";
 import { css } from "./blogcss"

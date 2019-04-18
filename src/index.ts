@@ -6,7 +6,7 @@ import { AdminRegister } from './components/adminregister/AdminRegisterComponent
 import { Navbar } from './components/navbar/Navbar';
 import BtnCounter from './components/btncounter/BtnCounter';
 import { Login } from './components/login/LoginComponent';
-import { HttpClient } from './HttpClient';
+import { HttpClient } from '@kloudsoftware/chromstahl-plugin';
 import { BlogInfoDialog } from './components/BlogInfoDialog/BlogInfoDialog';
 import { ProsemirrorComponent } from './components/prosemirror/ProsemirrorComponent';
 import { BlogPostViewComponent, BlogViewComponent } from './components/blogcomponent/BlogViewComponent';
