@@ -42,7 +42,7 @@ html, body {
 `;
 app.createElement("style", css, app.rootNode);
 
-app.use("http", new HttpClient("api." + document.location.host, app));
+app.use("http", new HttpClient("http://api." + document.location.host, app));
 
 const props = new Props(app, new Map([["blogName", "Chromstahl"]]));
 window.document.title = "Chromstahl";
