@@ -1,4 +1,4 @@
-import { Component, ComponentBuildFunc, ComponentProps } from '@kloudsoftware/eisen';
+import { Component, ComponentBuildFunc, ComponentProps, isDefinedAndNotEmpty } from '@kloudsoftware/eisen';
 import { VNode, Attribute, cssClass, id, labelFor, password, VNodeType, src } from '@kloudsoftware/eisen';
 import { Props } from '@kloudsoftware/eisen';
 import { VApp } from '@kloudsoftware/eisen';
@@ -15,7 +15,15 @@ export class Navbar extends Component {
             ], "");
 
             routerlnk.addClass("loginIcon");
-            app.createElement("img", undefined, routerlnk, [src("login.svg")])
+
+            let loginIcon: VNode = null;
+            if (isDefinedAndNotEmpty(window.localStorage.getItem("token"))) {
+                loginIcon = app.k("p", { value: window.localStorage.getItem("userName") })
+            } else {
+                loginIcon = app.k("img", { attrs: [src("login.svg")] });
+            }
+
+            routerlnk.appendChild(loginIcon);
 
             app.createElement("style", css, root);
             const div = app.k("div", { attrs: [cssClass("logo-container")] }, [
@@ -23,6 +31,12 @@ export class Navbar extends Component {
                 app.k("p", { value: "{{ blogSubtitle }}", props: props }),
                 routerlnk
             ]);
+
+            app.eventPipeLine.registerEvent("login", (userName: string) => {
+                const parent = loginIcon.parent;
+                parent.removeChild(loginIcon);
+                parent.appendChild(app.k("p", { value: userName }));
+            });
 
             root.appendChild(div);
 

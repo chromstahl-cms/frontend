@@ -69,13 +69,15 @@ export class Login extends Component {
                 const resp = http.performPost("/token", userInfo);
 
                 resp.then(resp => resp.json()).then(json => {
-                    console.log(json);
                     window.localStorage.setItem("token", json.token);
+                    window.localStorage.setItem("userName", userInfo.userName);
                     const path = window.sessionStorage.getItem("path");
                     if (path != undefined) {
                         window.sessionStorage.removeItem("path");
                         app.router.resolveRoute(path);
                     }
+
+                    app.eventPipeLine.callEvent("login", userInfo.userName);
                 });
 
                 return true;
