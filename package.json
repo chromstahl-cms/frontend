@@ -16,8 +16,8 @@
         "url": "https://github.com/kloudsoftware/eisen"
     },
     "dependencies": {
-        "@kloudsoftware/chromstahl-plugin": "^1.0.0",
         "@kloudsoftware/eisen": "1.0.16",
+        "@kloudsoftware/chromstahl-plugin": "1.0.1",
         "prosemirror-example-setup": "^1.0.1",
         "prosemirror-inputrules": "^1.0.1",
         "prosemirror-model": "^1.7.0",

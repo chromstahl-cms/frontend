@@ -6,10 +6,9 @@ import { AdminRegister } from './components/adminregister/AdminRegisterComponent
 import { Navbar } from './components/navbar/Navbar';
 import BtnCounter from './components/btncounter/BtnCounter';
 import { Login } from './components/login/LoginComponent';
-import { HttpClient } from './HttpClient';
+import { HttpClient } from '@kloudsoftware/chromstahl-plugin';
 import { BlogInfoDialog } from './components/BlogInfoDialog/BlogInfoDialog';
 import { ProsemirrorComponent } from './components/prosemirror/ProsemirrorComponent';
-import { BlogPostViewComponent, BlogViewComponent } from './components/blogcomponent/BlogViewComponent';
 import { Registration } from '@kloudsoftware/chromstahl-plugin'
 import { ErrorComponent } from './components/errorView/ErrorComponent';
 
@@ -43,7 +42,7 @@ html, body {
 `;
 app.createElement("style", css, app.rootNode);
 
-app.use("http", new HttpClient(`http://localhost:8083`, app));
+app.use("http", new HttpClient("http://api." + document.location.host, app));
 
 const props = new Props(app, new Map([["blogName", "Chromstahl"]]));
 window.document.title = "Chromstahl";
@@ -79,7 +78,6 @@ if(errorStates.length != 0) {
     router.registerRoute("/error", new ErrorComponent());
     router.resolveRoute("/error");
 } else {
-    router.registerRoute("/", new BlogViewComponent())
     router.registerRoute("/register", new AdminRegister())
     router.registerRoute("/foo", new BtnCounter());
     router.registerRoute("/login", new Login());

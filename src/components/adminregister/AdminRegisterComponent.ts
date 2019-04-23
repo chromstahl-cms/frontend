@@ -4,7 +4,7 @@ import { Props } from '@kloudsoftware/eisen';
 import { VApp } from '@kloudsoftware/eisen';
 import { css } from './adminregistercss'
 import { RouterLink } from '@kloudsoftware/eisen';
-import { HttpClient } from "../../HttpClient";
+import { HttpClient } from "@kloudsoftware/chromstahl-plugin";
 import { isDefinedAndNotEmpty } from '@kloudsoftware/eisen';
 
 

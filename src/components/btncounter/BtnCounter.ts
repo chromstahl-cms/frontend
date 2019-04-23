@@ -2,7 +2,7 @@ import { Component, ComponentBuildFunc } from '@kloudsoftware/eisen';
 import { VApp } from '@kloudsoftware/eisen';
 import { VNode } from '@kloudsoftware/eisen';
 import { Props } from '@kloudsoftware/eisen';
-import { HttpClient } from "../../HttpClient";
+import { HttpClient } from "@kloudsoftware/chromstahl-plugin";
 
 export default class BtnCounter extends Component {
     build(app: VApp): ComponentBuildFunc {
