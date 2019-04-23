@@ -47,7 +47,7 @@ app.use("http", new HttpClient("http://api." + document.location.host, app));
 const props = new Props(app, new Map([["blogName", "Chromstahl"]]));
 window.document.title = "Chromstahl";
 props.registerCallback("blogName", p => window.document.title = p);
-props.setProp("blogSubtitle", "because no one wants wordpress anyway");
+props.setProp("blogSubtitle", "Less > More");
 
 app.mountComponent(new Navbar(), app.rootNode, props);
 
