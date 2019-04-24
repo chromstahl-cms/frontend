@@ -8,7 +8,6 @@ import BtnCounter from './components/btncounter/BtnCounter';
 import { Login } from './components/login/LoginComponent';
 import { HttpClient } from '@kloudsoftware/chromstahl-plugin';
 import { BlogInfoDialog } from './components/BlogInfoDialog/BlogInfoDialog';
-import { ProsemirrorComponent } from './components/prosemirror/ProsemirrorComponent';
 import { Registration } from '@kloudsoftware/chromstahl-plugin'
 import { ErrorComponent } from './components/errorView/ErrorComponent';
 import { url } from './url';
@@ -83,7 +82,6 @@ if(errorStates.length != 0) {
     router.registerRoute("/foo", new BtnCounter());
     router.registerRoute("/login", new Login());
     router.registerRoute("/setup", new BlogInfoDialog(), props);
-    router.registerRoute("/prose", new ProsemirrorComponent());
     router.resolveRoute(document.location.pathname).catch(e => console.error(e));
 }
 
