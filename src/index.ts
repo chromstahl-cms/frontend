@@ -11,6 +11,7 @@ import { BlogInfoDialog } from './components/BlogInfoDialog/BlogInfoDialog';
 import { ProsemirrorComponent } from './components/prosemirror/ProsemirrorComponent';
 import { Registration } from '@kloudsoftware/chromstahl-plugin'
 import { ErrorComponent } from './components/errorView/ErrorComponent';
+import { url } from './url';
 
 class ErrorState {
     message: string;
@@ -42,7 +43,7 @@ html, body {
 `;
 app.createElement("style", css, app.rootNode);
 
-app.use("http", new HttpClient("http://api." + document.location.host, app));
+app.use("http", new HttpClient(url));
 
 const props = new Props(app, new Map([["blogName", "Chromstahl"]]));
 window.document.title = "Chromstahl";

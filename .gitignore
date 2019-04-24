@@ -8,3 +8,5 @@ cypress/fixtures/*
 cypress/screenshots/*
 cypress/screenshots/
 *~
+src/url.ts
+api.json
