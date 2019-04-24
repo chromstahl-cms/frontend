@@ -30,7 +30,7 @@
         "uuid": "^3.3.2"
     },
     "devDependencies": {
-        "@kloudsoftware/parcel-plugin-url": "^1.0.4",
+        "@kloudsoftware/parcel-plugin-url": "^1.0.7",
         "@types/css": "0.0.31",
         "@types/prosemirror-inputrules": "^1.0.2",
         "@types/prosemirror-model": "^1.7.0",
