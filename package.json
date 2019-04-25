@@ -16,7 +16,7 @@
         "url": "https://github.com/kloudsoftware/eisen"
     },
     "dependencies": {
-        "@kloudsoftware/chromstahl-plugin": "1.0.7",
+        "@kloudsoftware/chromstahl-plugin": "1.0.8",
         "shady-css-parser": "^0.1.0",
         "uuid": "^3.3.2"
     },
