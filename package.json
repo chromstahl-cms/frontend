@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@kloudsoftware/chromstahl-plugin": "1.0.4",
-        "@kloudsoftware/eisen": "1.0.17",
+        "@kloudsoftware/eisen": "1.0.18",
         "shady-css-parser": "^0.1.0",
         "uuid": "^3.3.2"
     },
