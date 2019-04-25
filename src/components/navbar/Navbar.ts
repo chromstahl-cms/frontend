@@ -42,7 +42,12 @@ export class Navbar extends Component {
 
             const http = app.get<HttpClient>("http");
             http.peformGet("/navbar/links").then(resp => {
-                const navItems = resp as Array<NavbarDTO>;
+                if (resp.status >= 400) {
+                    throw new Error(`Request returned a status code of ${resp.status}: ${resp.statusText}`);
+                }
+                return resp.json();
+            }).then(json => {
+                const navItems = json as Array<NavbarDTO>;
                 navItems.forEach(item => {
                     const el = new RouterLink(app, item.path, [], item.linkText);
                     div.appendChild(el);
