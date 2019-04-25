@@ -49,7 +49,7 @@ export class Navbar extends Component {
             }).then(json => {
                 const navItems = json as Array<NavbarDTO>;
                 navItems.forEach(item => {
-                const el = new RouterLink(app, "/admin/blog/new", [], "Write a new blog post", undefined,[cssClass("navbarlink border")]);
+                const el = new RouterLink(app, item.path, [], item.linkText, undefined,[cssClass("navbarlink border")]);
                     div.appendChild(el);
                 });
                 div.appendChild(loginLink);
