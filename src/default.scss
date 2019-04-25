@@ -106,6 +106,7 @@ $border-radius-full: 9999px;
 	  text-shadow:0px 1px 0px $green-darker;
     min-height:3em;
     text-align:center;
+    line-height:50px;
 }
 
 .btn:hover {
@@ -134,7 +135,6 @@ body {
 
 .router-btn {
     display: block;
-    line-height:50px;
     margin-top: auto;
 }
 
