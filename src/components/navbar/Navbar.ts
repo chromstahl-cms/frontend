@@ -5,6 +5,8 @@ import { VApp } from '@kloudsoftware/eisen';
 
 import { css } from './navbarcss';
 import { RouterLink } from '@kloudsoftware/eisen';
+import { HttpClient } from '@kloudsoftware/chromstahl-plugin';
+import { NavbarDTO } from './navbarDTO';
 
 export class Navbar extends Component {
     public build(app: VApp): ComponentBuildFunc {
@@ -38,11 +40,21 @@ export class Navbar extends Component {
                 parent.appendChild(app.k("p", { value: userName }));
             });
 
-            root.appendChild(div);
+            const http = app.get<HttpClient>("http");
+            http.peformGet("/navbar/links").then(resp => {
+                const navItems = resp as Array<NavbarDTO>;
+                navItems.forEach(item => {
+                    const el = new RouterLink(app, item.path, [], item.linkText);
+                    div.appendChild(el);
+                });
+                root.appendChild(div);
+            }).catch(err => {
+                console.error(err);
+                root.appendChild(div);
+            });
 
             return {
                 remount: () => {
-                    console.log("Navbar remounted")
                 }
             }
         }
