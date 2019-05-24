@@ -9,6 +9,27 @@ import { HttpClient } from '@kloudsoftware/chromstahl-plugin';
 import { NavbarDTO } from './navbarDTO';
 
 export class Navbar extends Component {
+    private insertNavItems(http: HttpClient, navDiv: VNode, root: VNode, loginLink: RouterLink, app: VApp, div: VNode): void {
+        http.peformGet("/navbar/links").then(resp => {
+            if (resp.status >= 400) {
+                throw new Error(`Request returned a status code of ${resp.status}: ${resp.statusText}`);
+            }
+            return resp.json();
+        }).then(json => {
+            navDiv.$getChildren().forEach(el => navDiv.removeChild(el));
+            const navItems = json as Array<NavbarDTO>;
+            navItems.forEach(item => {
+                const el = new RouterLink(app, item.path, [], item.linkText, undefined,[cssClass("navbarlink border")]);
+                navDiv.appendChild(el);
+            });
+            navDiv.appendChild(loginLink);
+            root.appendChild(div);
+        }).catch(err => {
+            console.error(err);
+            root.appendChild(div);
+        });
+    }
+
     public build(app: VApp): ComponentBuildFunc {
         return (root: VNode, props: Props): ComponentProps => {
             let loginLink = new RouterLink(app, "/login", [], "")
@@ -28,37 +49,24 @@ export class Navbar extends Component {
             loginLink.appendChild(loginIcon);
 
             app.createElement("style", css, root);
+            const navDiv = app.k("div");
             const div = app.k("div", { attrs: [cssClass("logo-container")] }, [
                 routerLinkHome,
                 app.k("p", { value: "{{ blogSubtitle }}", props: props }),
-                app.k("div", { attrs: [cssClass("navbarDivider")]})
+                app.k("div", { attrs: [cssClass("navbarDivider")]}),
+                navDiv
             ]);
 
             app.eventPipeLine.registerEvent("login", (userName: string) => {
                 const parent = loginIcon.parent;
                 parent.removeChild(loginIcon);
                 parent.appendChild(app.k("p", { value: userName }));
+                this.insertNavItems(http, navDiv, root, loginLink, app, div);
             });
 
             const http = app.get<HttpClient>("http");
-            http.peformGet("/navbar/links").then(resp => {
-                if (resp.status >= 400) {
-                    throw new Error(`Request returned a status code of ${resp.status}: ${resp.statusText}`);
-                }
-                return resp.json();
-            }).then(json => {
-                const navItems = json as Array<NavbarDTO>;
-                navItems.forEach(item => {
-                const el = new RouterLink(app, item.path, [], item.linkText, undefined,[cssClass("navbarlink border")]);
-                    div.appendChild(el);
-                });
-                div.appendChild(loginLink);
-                root.appendChild(div);
-            }).catch(err => {
-                console.error(err);
-                root.appendChild(div);
-            });
 
+            this.insertNavItems(http, navDiv, root, loginLink, app, div);
             return {
                 remount: () => {
                 }
