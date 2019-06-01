@@ -17,4 +17,11 @@ h1 {
     color: #a1a1a1;
     text-decoration: underline;
 }
+
+.errorText {
+    color: red;
+    margin: .5em;
+    width: 15em;
+    text-align: center;
+}
 `;
