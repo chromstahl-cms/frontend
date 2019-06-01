@@ -9,7 +9,7 @@ import { HttpClient } from '@kloudsoftware/chromstahl-plugin';
 import { NavbarDTO } from './navbarDTO';
 
 export class Navbar extends Component {
-    private insertNavItems(http: HttpClient, navDiv: VNode, root: VNode, loginLink: RouterLink, app: VApp, div: VNode): void {
+    private insertNavItems(http: HttpClient, navDiv: VNode, loginLink: RouterLink, app: VApp): void {
         http.peformGet("/navbar/links").then(resp => {
             if (resp.status >= 400) {
                 throw new Error(`Request returned a status code of ${resp.status}: ${resp.statusText}`);
@@ -23,10 +23,8 @@ export class Navbar extends Component {
                 navDiv.appendChild(el);
             });
             navDiv.appendChild(loginLink);
-            root.appendChild(div);
         }).catch(err => {
             console.error(err);
-            root.appendChild(div);
         });
     }
 
@@ -61,12 +59,13 @@ export class Navbar extends Component {
                 const parent = loginIcon.parent;
                 parent.removeChild(loginIcon);
                 parent.appendChild(app.k("p", { value: userName }));
-                this.insertNavItems(http, navDiv, root, loginLink, app, div);
+                this.insertNavItems(http, navDiv, loginLink, app);
             });
 
             const http = app.get<HttpClient>("http");
 
-            this.insertNavItems(http, navDiv, root, loginLink, app, div);
+            this.insertNavItems(http, navDiv, loginLink, app);
+            root.appendChild(div);
             return {
                 remount: () => {
                 }
